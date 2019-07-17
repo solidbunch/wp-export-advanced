@@ -1,0 +1,33 @@
+{
+    "name": "solidbunch/starter-kit",
+    "description": "Wordpress theme boilerplate",
+    "type": "project",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "SolidBunch Team",
+            "email": "contact@solidbunch.com"
+        },
+        {
+            "name": "Nikita Bolotov",
+            "email": "zyv4yk@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "google/apiclient": "^2.0",
+        "abraham/twitteroauth": "^1.0",
+        "facebook/graph-sdk": "^5.7"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "StarterKit\\": "app/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
