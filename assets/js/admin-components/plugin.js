@@ -1,19 +1,11 @@
 import $ from 'jquery';
 
-export default class Theme {
+export default class Plugin {
 	/**
 	 Constructor
 	 **/
 	constructor() {
-		this.build();
 		this.events()
-	}
-
-	/**
-	 Build page elements, plugins init
-	 **/
-	build() {
-
 	}
 
 	/**
