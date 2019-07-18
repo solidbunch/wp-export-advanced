@@ -25,6 +25,8 @@ class Init {
 
 		add_action( 'admin_init', [ $this, 'export_check' ] );
 
+		add_filter( 'plugin_action_links', [ $this, 'add_export_link' ], 10, 2 );
+
 	}
 
 	function register_submenu_page() {
@@ -126,5 +128,17 @@ class Init {
 		return $args;
 	}
 
+	/**
+	 * Add a link to the export on the Plugins screen.
+	 */
+	public function add_export_link( $links ) {
+
+		$url = admin_url( 'tools.php?page=wp-export-advanced' );
+
+		$links = (array) $links;
+		$links[] = sprintf( '<a href="%s">%s</a>', $url, __( 'Export', 'wp-export-advanced' ) );
+
+		return $links;
+	}
 
 }

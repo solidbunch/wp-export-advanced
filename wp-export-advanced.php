@@ -12,8 +12,8 @@
  *
  * @starter-kit-plugin
  * Plugin Name: Wp Export Advanced
- * Plugin URI: https://github.com/SolidBunch/wp-export-advanced-Plugin
- * Description: Simple advanced WordPress Export plugin.
+ * Plugin URI: https://github.com/SolidBunch/wp-export-advanced
+ * Description: Simple advanced WordPress Export plugin. Provides to export content by selecting a date range for a custom post types.
  * Version: 1.0.0
  * Author: SolidBunch
  * Author URI: https://solidbunch.com
