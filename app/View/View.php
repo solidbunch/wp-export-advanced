@@ -30,19 +30,11 @@ class View {
 	public function load( $path = '', array $data = array(), $return = false, $base = null ) {
 		
 		if ( $base === null ) {
-			$base = get_stylesheet_directory();
+			$base = WP_EXPORT_ADVANCED_DIR;
 		}
 		
-		if ( is_child_theme() ) {
-			$full_path = $base . $path;
-			if ( ! file_exists( $full_path ) ) {
-				$base      = get_template_directory();
-				$full_path = $base . $path . '.php';
-			}
-		} else {
-			$full_path = $base . $path . '.php';
-		}
-		
+		$full_path = $base . $path . '.php';
+
 		if ( $return ) {
 			ob_start();
 		}

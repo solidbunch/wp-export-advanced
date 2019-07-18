@@ -86,5 +86,45 @@ class Utils {
 		
 	}
 
+	/**
+	 * Create the date options fields for exporting a given post type.
+	 *
+	 * @global wpdb      $wpdb      WordPress database abstraction object.
+	 * @global WP_Locale $wp_locale Date and Time Locale object.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string $post_type The post type. Default 'post'.
+	 */
+	public static function export_date_options( $post_type = 'post' ) {
+		global $wpdb, $wp_locale;
+
+		$months = $wpdb->get_results( $wpdb->prepare( "
+		SELECT DISTINCT YEAR( post_date ) AS year, MONTH( post_date ) AS month
+		FROM $wpdb->posts
+		WHERE post_type = %s AND post_status != 'auto-draft'
+		ORDER BY post_date DESC
+	", $post_type ) );
+
+		$month_count = count( $months );
+		if ( !$month_count || ( 1 == $month_count && 0 == $months[0]->month ) )
+			return;
+
+		foreach ( $months as $date ) {
+			if ( 0 == $date->year )
+				continue;
+
+			$month = zeroise( $date->month, 2 );
+			echo '<option value="' . $date->year . '-' . $month . '">' . $wp_locale->get_month( $month ) . ' ' . $date->year . '</option>';
+		}
+	}
+
+	public static function export_autor_options( $post_type = 'post' ) {
+		global $wpdb;
+		$authors = $wpdb->get_col( "SELECT DISTINCT post_author FROM {$wpdb->posts} WHERE post_type = '$post_type' " );
+
+		return $authors;
+	}
+
 	
 }

@@ -19,7 +19,7 @@
  * Author URI: https://solidbunch.com
  * License: GPL-2.0+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: wp-export-advanced-plugin
+ * Text Domain: wp-export-advanced
  * Domain Path: /languages
  */
 
@@ -34,6 +34,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WP_EXPORT_ADVANCED_VERSION', '1.0.0' );
 define( 'WP_EXPORT_ADVANCED_DIR', plugin_dir_path( __FILE__ ) );
+define( 'WP_EXPORT_ADVANCED_URL', plugin_dir_url( __FILE__ ) );
 
 // helper functions for developers
 require_once __DIR__ . '/app/dev.php';

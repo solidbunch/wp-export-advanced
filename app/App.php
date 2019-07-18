@@ -2,7 +2,6 @@
 
 namespace WpExportAdvanced;
 
-use WpExportAdvanced\Helper\Utils;
 use WpExportAdvanced\View\View;
 
 /**
@@ -69,10 +68,15 @@ class App {
 	private function _dispatch() {
 		
 		$this->Controller = new \stdClass();
+		$this->Model      = new \stdClass();
 
 		// load dependency classes first
 		// View
 		$this->View = new View();
+
+		// Autoload models
+		$this->_load_modules( 'Model', '/' );
+
 
 		// Autoload controllers
 		$this->_load_modules( 'Controller', '/' );
