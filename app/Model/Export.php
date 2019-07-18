@@ -67,8 +67,7 @@ class Export {
 	 *     @type string $start_date     Start date to export content from. Expected date format is 'Y-m-d'. Used only
 	 *                                  when `$content` is 'post', 'page' or 'attachment'. Default false (since the
 	 *                                  beginning of time).
-	 *     @type string $end_date       End date to export content to. Expected date format is 'Y-m-d'. Used only when
-	 *                                  `$content` is 'post', 'page' or 'attachment'. Default false (latest publish date).
+	 *     @type string $end_date       End date to export content to. Expected date format is 'Y-m-d'. Default false (latest publish date).
 	 *     @type string $status         Post status to export posts for. Used only when `$content` is 'post' or 'page'.
 	 *                                  Accepts false (all statuses except 'auto-draft'), or a specific status, i.e.
 	 *                                  'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or
@@ -96,8 +95,15 @@ class Export {
 		if ( ! empty( $sitename ) ) {
 			$sitename .= '.';
 		}
-		$date = date( 'Y-m-d' );
-		$wp_filename = $sitename . 'wordpress.' . $date . '.xml';
+		if ( !empty( $args['start_date'] )) {
+			if ( empty( $args['end_date'] )) {
+				$args['end_date'] = date( 'Y-m' );
+			}
+			$wp_filename = $sitename . 'wordpress.' . $args['content'] . '.' . $args['start_date'] . '-' . $args['end_date'] . '.xml';
+		} else {
+			$date = date( 'Y-m-d' );
+			$wp_filename = $sitename . 'wordpress.' . $args['content'] . '.' . $date . '.xml';
+		}
 		/**
 		 * Filters the export filename.
 		 *
