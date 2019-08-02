@@ -25,7 +25,7 @@ class Init {
 
 		add_action( 'admin_init', [ $this, 'export_check' ] );
 
-		add_filter( 'plugin_action_links', [ $this, 'add_export_link' ], 10, 2 );
+		add_filter( 'plugin_action_links_' . WP_EXPORT_ADVANCED_BASE, [ $this, 'add_export_link' ], 10, 2 );
 
 	}
 

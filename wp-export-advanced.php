@@ -34,7 +34,9 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WP_EXPORT_ADVANCED_VERSION', '1.0.0' );
 define( 'WP_EXPORT_ADVANCED_DIR', plugin_dir_path( __FILE__ ) );
+define( 'WP_EXPORT_ADVANCED_BASE', plugin_basename( __FILE__ ) );
 define( 'WP_EXPORT_ADVANCED_URL', plugin_dir_url( __FILE__ ) );
+
 
 // helper functions for developers
 require_once __DIR__ . '/app/dev.php';
